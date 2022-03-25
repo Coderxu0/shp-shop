@@ -65,7 +65,6 @@
 
   export default {
     name: '',
-
   }
 </script>
 

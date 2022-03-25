@@ -137,7 +137,6 @@ export default {
     //删除商品
     async deleteById(skuId) {
       const result = await this.$store.dispatch("deleteCartByid", skuId);
-      console.log(result);
       if (result.code == 200) {
         this.getData();
       } else {

@@ -146,13 +146,13 @@ export default {
             //关闭弹框
             done();
           } else {
-            //判断是否是真的支付了
-            // if (this.code == 200) {
+            // 判断是否是真的支付了
+            if (this.code == 200) {
               clearInterval(this.timer);
               this.timer = null;
               done()
               this.$router.push('/paysuccess')
-            // }
+            }
           }
         },
       });

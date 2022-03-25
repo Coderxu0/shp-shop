@@ -141,7 +141,6 @@ export default {
         paymentWay:'ONLINE',
         orderComment:this.msg,
         orderDetailList:this.OrderInfo.detailArrayList
-
       }
       //参数：tradeNo
       const result=await this.$API.requSubmitOrder(tradeNo,data)

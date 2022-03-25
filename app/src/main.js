@@ -11,6 +11,10 @@ Vue.component(TypeNav.name,TypeNav)
 import Carousel from '@/components/Carousel'
 Vue.component(Carousel.name,Carousel)
 
+//手动实现轮播图
+import carou from '@/components/carou'
+Vue.component(carou.name,carou)
+
 //分页器 注册全局组件
 import Pagination from '@/components/Pagination'
 Vue.component(Pagination.name,Pagination)
@@ -31,12 +35,17 @@ Vue.prototype.$msgbox=MessageBox
 Vue.prototype.$alert=MessageBox.alert
 
 import atm from '@/assets/images/lazy.jpg'
-// 引入 vue-lazyload
+// 引入 vue-lazyload  手动配置图片懒加载
 import VueLazyload from 'vue-lazyload'
 // 注册
 Vue.use(VueLazyload,{
   //懒加载默认的图片
   loading:atm
+})
+import lazyLoad from './lazyLoad'
+Vue.use(lazyLoad,{
+  //懒加载默认的图片
+  default:atm
 })
 
 //引入 vee-validate 插件 验证表单
@@ -66,12 +75,12 @@ VeeValidate.Validator.extend('agree',{
   },
   getMessage:(field)=>field+'必须同意'
 })
-new Vue({
-  render: h => h(App),
-  beforeCreate(){
-    Vue.prototype.$bus=this
-    Vue.prototype.$API=API
-  },
+  new Vue({
+    render: h => h(App),
+    beforeCreate(){
+      Vue.prototype.$bus=this
+      Vue.prototype.$API=API
+    },
 
   //注册路由
   //组件实例上会有$route和$router
@@ -80,5 +89,3 @@ new Vue({
   //组件实例上或有$store
   store
 }).$mount('#app')
-
-console.log(''||undefined)

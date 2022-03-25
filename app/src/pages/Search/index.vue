@@ -74,7 +74,7 @@
                 <div class="list-wrap">
                   <div class="p-img">
                     <router-link :to="`/detail/${good.id}`">
-                      <img v-lazy="good.defaultImg" />
+                      <img v-gaga="good.defaultImg" />
                     </router-link>
                   </div>
                   <div class="price">
@@ -189,6 +189,7 @@ export default {
       this.searchParams.category1Id = "";
       this.searchParams.category2Id = "";
       this.searchParams.category3Id = "";
+      this.searchParams.categoryName = "";
       Object.assign(this.searchParams, this.$route.query, this.$route.params);
       this.getData();
     },
@@ -199,11 +200,11 @@ export default {
     },
     removeCategoryName() {
       //全部结果显示的是我们点击三级分类的名字 在点击x后会清楚参数相关数据并再次发送请求
-      this.searchParams.categoryName = "";
-      this.searchParams.category1Id = "";
-      this.searchParams.category2Id = "";
-      this.searchParams.category3Id = "";
-      this.getData();
+      // this.searchParams.categoryName = "";
+      // this.searchParams.category1Id = "";
+      // this.searchParams.category2Id = "";
+      // this.searchParams.category3Id = "";
+      // this.getData();
       //虽然把参数数据中的属性删除了，并再此项服务器发送了数据，但是此时地址栏的路径还是原来的路径，这里可以采用重新路由跳转来改变路径
       //如果地址栏中有params参数 重新跳转时还要携带params参数，因为上面删除的对应的是query参数信息
       if (Object.keys(this.$route.params).length) {

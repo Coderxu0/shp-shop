@@ -4,7 +4,7 @@
           <div class="swiper-wrapper">
             <div
               class="swiper-slide"
-              v-for="(carousel, index) in List"
+              v-for="(carousel) in List"
               :key="carousel.id"
             >
               <img :src="carousel.imgUrl" />

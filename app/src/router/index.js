@@ -48,6 +48,7 @@ const Trade=()=>import('@/pages/Trade')
 const Pay=()=>import('@/pages/Pay')
 const PaySuccess=()=>import('@/pages/PaySuccess')
 const Center=()=>import('@/pages/Center')
+const Faile=()=>import('@/pages/Fail')
 
 
 //引入二级路由
@@ -57,6 +58,11 @@ import myOrder from '@/pages/Center/myOrder'
 //配置路由
 let router = new VueRouter({
   routes: [
+    {
+      name:'not-found',
+      path:'*',
+      redirect:'/home'
+    },
     {
       name: 'home',
       path: '/home',
@@ -68,6 +74,19 @@ let router = new VueRouter({
       path: '/search/:keyword?',
       component: Search,
       meta: { "show": true }
+    },
+    {
+      name:'NoGoods',
+      path:'/NoGoods',
+      component:Faile,
+      meta:{'show':true},
+      beforeEnter:(to,from,next)=>{
+        if(from.path.includes('search')){
+          next()
+        }else{
+          next(false)
+        }
+      }
     },
     {
       path: '/login',

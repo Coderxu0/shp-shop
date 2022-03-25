@@ -35,8 +35,11 @@ requests.interceptors.request.use((config)=>{
 })
 
 requests.interceptors.response.use((res)=>{
-  //成功的回调函数：服务器响应数据回来以后，响应lan'jie'qi可以检测到，可以做一些事情
+  //成功的回调函数：服务器响应数据回来以后，响应拦截器可以检测到，可以做一些事情
   nprogress.done()
+  if(res.status==500){
+    window.location.hash='NoGoods'
+  }
   return res.data
 },(err)=>{
   //响应失败的回调函数
